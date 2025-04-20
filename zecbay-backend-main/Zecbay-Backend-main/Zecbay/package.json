@@ -1,0 +1,14 @@
+{
+  "name": "zecbay-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev api/auctions.ts"
+  },
+  "dependencies": {
+    "typescript": "^4.0.0"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0"
+  }
+}

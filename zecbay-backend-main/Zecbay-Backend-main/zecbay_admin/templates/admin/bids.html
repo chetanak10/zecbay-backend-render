@@ -1,0 +1,35 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Bids</h2>
+
+<table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+    <thead>
+        <tr class="bg-gray-100">
+            <th class="py-3 px-6 text-left border-b">Exporter</th>
+            <th class="py-3 px-6 text-left border-b">Auction</th>
+            <th class="py-3 px-6 text-left border-b">Price per Quantity</th>
+            <th class="py-3 px-6 text-left border-b">Bids Made</th>
+            <th class="py-3 px-6 text-left border-b">Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for bid in bids %}
+        <tr>
+            <td class="py-3 px-6 border-b">{{ bid.exporterId.username }}</td>
+            <td class="py-3 px-6 border-b">{{ bid.auctionID.product_name }}</td>
+            <td class="py-3 px-6 border-b">{{ bid.pricePerQuantity }}</td>
+            <td class="py-3 px-6 border-b">
+                {% for item in bid.bidsMade %}
+                    <div>{{ item }}</div>
+                {% empty %}
+                    <em>No bids yet</em>
+                {% endfor %}
+            </td>
+            <td class="py-3 px-6 border-b">{{ bid.createdAt|date:"Y-m-d H:i" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZecBay Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+    <div class="min-h-screen flex flex-col">
+        <header class="bg-white shadow p-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <!-- Make ZecBay Admin clickable and redirect to the dashboard -->
+                <a href="{% url 'admin_dashboard' %}" class="text-2xl font-bold">
+                    ZecBay Admin
+                </a>
+                <p>Welcome, {{ request.session.admin_user }}</p>
+                <nav>
+                    <!-- Only show the dashboard link if it's not the current page -->
+                    {% if request.path != '/admin/' %}
+                        <a href="{% url 'admin_dashboard' %}" class="mx-2 text-blue-600 hover:underline">Dashboard</a>
+                    {% endif %}
+                    <a href="{% url 'admin_user_list' %}" class="mx-2 text-blue-600 hover:underline">Users</a>
+                    <a href="{% url 'admin_auction_list' %}" class="mx-2 text-blue-600 hover:underline">Auctions</a>
+                    <a href="{% url 'admin_bid_list' %}" class="mx-2 text-blue-600 hover:underline">Bids</a>
+                    <a href="{% url 'admin_message_list' %}" class="mx-2 text-blue-600 hover:underline">Messages</a>
+                    <a href="{% url 'admin_logout' %}" class="mx-2 text-red-600 hover:underline">Logout</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="flex-grow container mx-auto p-6">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <footer class="bg-white text-center text-sm p-4 border-t">
+            &copy; 2025 ZecBay Admin Panel
+        </footer>
+    </div>
+</body>
+</html>

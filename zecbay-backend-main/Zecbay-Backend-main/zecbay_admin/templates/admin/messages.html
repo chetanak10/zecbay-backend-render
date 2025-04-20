@@ -1,0 +1,35 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Messages</h2>
+
+<table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+    <thead>
+        <tr class="bg-gray-100">
+            <th class="py-3 px-6 text-left border-b">Auction</th>
+            <th class="py-3 px-6 text-left border-b">Sender</th>
+            <th class="py-3 px-6 text-left border-b">Receiver</th>
+            <th class="py-3 px-6 text-left border-b">Message</th>
+            <th class="py-3 px-6 text-left border-b">Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for message in messages %}
+        <tr>
+            <td class="py-3 px-6 border-b">
+                {% if message.auction %}
+                    {{ message.auction }}
+                {% else %}
+                    <em>Missing Auction</em>
+                {% endif %}
+            </td>
+            <td class="py-3 px-6 border-b">{{ message.sender_username }}</td>
+            <td class="py-3 px-6 border-b">{{ message.receiver_username }}</td>
+            <td class="py-3 px-6 border-b">{{ message.message }}</td>
+            <td class="py-3 px-6 border-b">{{ message.timestamp|date:"Y-m-d H:i" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

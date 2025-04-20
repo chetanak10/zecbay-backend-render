@@ -1,0 +1,33 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Auctions</h2>
+
+<table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+    <thead>
+        <tr class="bg-gray-100">
+            <th class="py-3 px-6 text-left border-b">Product</th>
+            <th class="py-3 px-6 text-left border-b">Category</th>
+            <th class="py-3 px-6 text-left border-b">Initial Price</th>
+            <th class="py-3 px-6 text-left border-b">Current Price</th>
+            <th class="py-3 px-6 text-left border-b">Rounds</th>
+            <th class="py-3 px-6 text-left border-b">Created By</th>
+            <th class="py-3 px-6 text-left border-b">Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for auction in auctions %}
+        <tr>
+            <td class="py-3 px-6 border-b">{{ auction.product_name }}</td>
+            <td class="py-3 px-6 border-b">{{ auction.category }} / {{ auction.subcategory }}</td>
+            <td class="py-3 px-6 border-b">{{ auction.initial_price }}</td>
+            <td class="py-3 px-6 border-b">{{ auction.current_price }}</td>
+            <td class="py-3 px-6 border-b">{{ auction.round }} / {{ auction.total_rounds }}</td>
+            <td class="py-3 px-6 border-b">{{ auction.user.username }}</td>
+            <td class="py-3 px-6 border-b">{{ auction.created_at|date:"Y-m-d H:i" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Users</h2>
+
+<table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+    <thead>
+        <tr class="bg-gray-100">
+            <th class="py-3 px-6 text-left border-b">UserID</th>
+            <th class="py-3 px-6 text-left border-b">Username</th>
+            <th class="py-3 px-6 text-left border-b">Email</th>
+            <th class="py-3 px-6 text-left border-b">User Type</th>
+            <th class="py-3 px-6 text-left border-b">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td class="py-3 px-6 border-b">{{ user.userid }}</td>
+            <td class="py-3 px-6 border-b">{{ user.username }}</td>
+            <td class="py-3 px-6 border-b">{{ user.email }}</td>
+            <td class="py-3 px-6 border-b">{{ user.user_type }}</td>
+            <td class="py-3 px-6 border-b">{{ user.verification_status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'admin/base.html' %}
+
+{% block content %}
+<h2 class="text-xl font-semibold mb-4">Dashboard</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+    <a href="{% url 'admin_user_list' %}" class="bg-white rounded-lg shadow p-6 block hover:bg-gray-100 transition">
+        <div class="text-gray-500">Users</div>
+        <p class="text-2xl font-bold">{{ users_count }}</p>
+    </a>
+
+    <a href="{% url 'admin_auction_list' %}" class="bg-white rounded-lg shadow p-6 block hover:bg-gray-100 transition">
+        <div class="text-gray-500">Auctions</div>
+        <p class="text-2xl font-bold">{{ auctions_count }}</p>
+    </a>
+
+    <a href="{% url 'admin_bid_list' %}" class="bg-white rounded-lg shadow p-6 block hover:bg-gray-100 transition">
+        <div class="text-gray-500">Bids</div>
+        <p class="text-2xl font-bold">{{ bids_count }}</p>
+    </a>
+
+    <a href="{% url 'admin_message_list' %}" class="bg-white rounded-lg shadow p-6 block hover:bg-gray-100 transition">
+        <div class="text-gray-500">Messages</div>
+        <p class="text-2xl font-bold">{{ messages_count }}</p>
+    </a>
+
+</div>
+{% endblock %}
